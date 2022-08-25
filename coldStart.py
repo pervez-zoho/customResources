@@ -1,6 +1,8 @@
 import os,sys
 import getpass
 
+os.system("python3 /home/local/ZOHOCORP/sayad-pt5854/ZohoWorkspace/customResources/refreshMysql.py")
+
 httpsconfig = '''Connector port="8448"
  maxThreads="150"
  minSpareThreads="25"
@@ -52,6 +54,8 @@ except Exception as e:
 try:
     myDbName = input("Enter your database name :")
     myDbPasswd = getpass.getpass("Enter your database password :")
+    myDbName = myDbName if myDbName!="" else "jbossdb"
+    myDbPasswd = myDbPasswd if myDbPasswd!="" else "root@123"
 except Exception as e:
     print("Database getpass failed\n")
     print(e)  
