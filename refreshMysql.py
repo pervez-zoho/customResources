@@ -4,7 +4,7 @@ try:
     db = mysql.connect(
         host = "localhost",
         user = "root",
-        passwd = "root@123"
+        passwd = "sas"
     )
 
     cursor = db.cursor()
@@ -13,8 +13,8 @@ try:
 
     databases = [_[0] for _ in cursor.fetchall() if (_[0].startswith("db") and _[0].endswith("db"))]
 
-    cursor.execute("DROP DATABASE jbossdb;")
-    cursor.execute("CREATE DATABASE jbossdb;")
+    cursor.execute("DROP DATABASE jbossdbpvz;")
+    cursor.execute("CREATE DATABASE jbossdbpvz;")
     for _ in databases:
         cursor.execute(f"DROP DATABASE {_}")
     print("Success")

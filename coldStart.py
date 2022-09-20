@@ -1,9 +1,10 @@
 import os,sys
 import getpass
 
-os.system("python3 /home/local/ZOHOCORP/sayad-pt5854/ZohoWorkspace/customResources/refreshMysql.py")
+if(input("Do you want to clean the existing databases ?\n(Y/n) >>> ").lower()=="y"):
+    os.system("python3 /home/local/ZOHOCORP/sayad-pt5854/ZohoWorkspace/customResources/refreshMysql.py")
 
-httpsconfig = '''Connector port="8448"
+httpsconfig = '''Connector port="7448"
  maxThreads="150"
  minSpareThreads="25"
  maxSpareThreads="75"
@@ -54,8 +55,8 @@ except Exception as e:
 try:
     myDbName = input("Enter your database name :")
     myDbPasswd = getpass.getpass("Enter your database password :")
-    myDbName = myDbName if myDbName!="" else "jbossdb"
-    myDbPasswd = myDbPasswd if myDbPasswd!="" else "root@123"
+    myDbName = myDbName if myDbName!="" else "jbossdbpvz"
+    myDbPasswd = myDbPasswd if myDbPasswd!="" else "sas"
 except Exception as e:
     print("Database getpass failed\n")
     print(e)  
@@ -71,7 +72,7 @@ except Exception as e:
 
 try:
     with open("./server.xml.orig","r") as f:
-        overallcontent = f.read().replace("8080","8085")
+        overallcontent = f.read().replace("8080","7085")
         li = overallcontent.split("<")
         for index,_ in enumerate(li):
             if(("Connector" in _) and ("port" in _) and ("8443" in _) and ("secure" in _)):
