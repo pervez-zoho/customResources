@@ -38,7 +38,7 @@ if(len(sys.argv)<=1):
 
     try:
         zipfilename = [_ for _ in os.listdir() if _.endswith(".zip")][0]
-        zipfilename = "./"+zipfilename if input(f"Is {zipfilename} your output ZIP file ? (y/n)\n>>> ").lower()=="y" else input("Enter filepath :\n>>> ")
+        zipfilename = "./"+zipfilename if input(f"Is {zipfilename} your output ZIP file ? (y/n)\n>>> ").lower()!="n" else input("Enter filepath :\n>>> ")
         zipfilename = zipfilename+".zip" if(not zipfilename.endswith(".zip")) else zipfilename
     except Exception as e:
         zipfilename = input("Enter filepath :\n>>> ")
