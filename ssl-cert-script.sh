@@ -122,8 +122,12 @@ cat ./server/certs/server.crt ./sub-ca/certs/sub-ca.crt > ./server/certs/chained
 
 sleep 2
 
-cd ..
-
 tree
+
+cp ./server/certs/server.crt ./server.crt
+cp ./sub-ca/certs/sub-ca.crt ./sub-ca.crt
+cp ./root-ca/certs/ca.crt ./ca.crt
+cp ./server/private/server.key ./server.key
+
 
 echo -e "\nCertificate Creation Completed\n"
